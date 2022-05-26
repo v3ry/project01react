@@ -1,0 +1,463 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-image:url(./imgs/pexels-dmitry-zvolskiy-2062426.jpg);
+    background-attachment: fixed;
+    background-position: center;
+    width: 100%;
+    background-size: cover;
+    height:max-content;
+    background-repeat:repeat;
+    padding-bottom: 60px;
+    margin-top: 200px;
+}
+img{
+    width: 200px;
+}
+/*
+zone Header
+*/
+header{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+}
+.mainImg{
+    width: 100%;
+    height: 160px;
+    object-fit:cover;
+    border-bottom: 2px solid white;
+}
+#mainTitle{
+    position: absolute;
+    top: 10%;
+    left: 0%;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    color:antiquewhite;
+    text-shadow: #FC0 1px 0 10px;
+}
+.buttonBlock{
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    width: 100%;
+    top: 50%;
+}
+
+.button{
+    position: relative;
+    margin: 0.5rem;
+    height: 60px;
+}
+.button img{
+    position: relative;
+    width:177px;
+    height: 63px;
+    border-radius: 11px;
+    border: 1px solid black;
+}
+.button img:hover{
+    border: 2px solid red;
+}
+.button h2{
+    position: relative;
+    top: -80%;
+    left: 0%;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 24px;
+    align-items: center;
+    text-align: center;
+    pointer-events:none;
+}
+#bAccueil{
+    color: black;
+    text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em white;
+}
+#bSucree{
+    color:gold;
+    text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
+}
+#bSalee{
+    color:rgb(169, 255, 226);
+    text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
+}
+#bContact{
+    color: black;
+    text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em white;    
+}
+/*
+Zone Main
+*/
+main{
+    margin: 1rem 10%;
+    background-color: rgba(250, 235, 215,0.8);
+    border-radius: 11px;
+    padding: 2rem;
+}
+main h1{
+    margin: 0.5rem 1rem;
+    margin-bottom: 2rem;
+}
+
+main h2{
+    margin: 2rem 1rem 1rem 1rem;
+}
+/*
+Zone Footer
+*/
+footer{
+    background-color: rgb(193, 158, 128);
+    width: 100%;
+    height: 50px;
+    vertical-align:middle;
+    text-align: center;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    vertical-align:middle;
+    text-align: center;
+    align-items: center;
+    border-top: 2px solid white;
+    position: fixed;
+    bottom: 0;
+    z-index: 2;
+}
+footer p{
+    margin-left: 1rem;
+    vertical-align:middle;
+    text-align: center;
+    align-items: center;
+}
+footer img{
+    height: 50px;
+    object-fit:contain;
+}
+p{
+    font-size: 20px;
+}
+h4{
+    margin: 1rem;
+    font-size: 20px;
+}
+/*
+Page Sucré Salé
+*/
+ul li{
+    white-space: pre-wrap;
+}
+.zoneRecettes{
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(400px, 1fr) );
+    gap: 30px;
+    width: 100%;
+    height: fit-content;
+}
+
+.recettePreview{
+    display: inline-flex;
+    background-color:bisque;
+    border-radius: 11px;
+    padding: 1rem;
+    margin: 1rem;
+    width: 400px;
+    height: fit-content;
+    justify-self: center;
+}
+.recettePreview h3, .recettePreview ul{
+    margin: 1rem;
+    margin-left: 2rem;
+    
+}
+.recettePreview h3{
+    text-align: center;
+}
+.recettePreview img{
+    width: 150px;
+    height: 125px;
+    image-rendering: pixelated;
+    border-radius: 11px;
+    align-self: center;
+}
+.preview{
+    display: inline-flex;
+}
+.zoneTextPreview{
+    display: block;
+}
+
+.recetteFull{
+    display: none;
+}
+.displayRecette ol{
+    padding: 0.5rem;
+}
+.displayRecette{
+    display: block;
+    width: fit-content;/*480px */
+    height: fit-content;
+    margin: auto + 1rem;
+    z-index: 1;
+}
+.displayText{
+    display: block;
+}
+.displayRecette p,.recettePreview h3,.recettePreview ol li,.recetteFull.displayRecette{
+    pointer-events:none;
+}
+
+
+/*
+Page Contact
+*/
+form{
+    margin: 2rem;
+}
+form label{
+    margin: 2rem 0rem 1rem 2rem;
+    font-weight: bolder;
+}
+form input,textarea{
+    padding: 4px;
+    width: 80%;
+    height: 2rem;
+    margin: 1rem;
+    border-radius: 11px;
+}
+#message{
+    height: 7rem;
+}
+#submit{
+    width: 4rem;
+    margin: 0 50%;
+}
+
+h1,h2,h3,h4,p,#bAccueil,#bSucree,#bSalée,#bContact,li{
+    /* font-family: "Roboto", sans-serif; */
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+/*
+Burger Menu
+*/
+.hamburger{
+    display: none;
+}
+
+/*
+Zone Responsive 
+*/
+
+@media screen and (max-width: 700px) {
+    .buttonBlock{
+        width:fit-content;
+        background-color: cornsilk;
+        display: none;
+        flex-wrap: wrap;
+        align-content: space-around;
+        border-radius: 11px;
+        margin: 2rem;
+        margin-top: 4.9rem;
+        border: 1px solid black;
+    }
+    .displayRecette{
+      width: 100%;
+    }
+    .hamburger{
+        display: initial;
+        position: fixed;
+        top: 4rem;
+        right: 1rem;
+        z-index: 3;
+    }
+    .hamburger img{
+        margin-top: 2rem;
+        width: 50px;
+        height: 50px;
+    }  
+
+}
+
+@media screen and (max-width: 600px) {
+    main{
+        margin: 0;
+        padding: 1rem 0;
+        width: 100%;
+    }
+    .zoneRecettes{
+        justify-content: space-around;
+    }
+    .blocAccueil{
+      padding: 1rem;
+    }
+    .blocNews{
+      padding: 1rem;
+    }
+    .preview{
+        display: flex;
+        flex-direction: column;
+    }
+    .recettePreview{
+        display: block;
+        width: 100%;
+    }
+    footer p{
+        font-size: 1rem;
+    }
+    footer img{
+        width: 120px;
+    }
+}
+
+/*
+Anim Part
+*/
+.glitchedAnim,
+.invisible-text {
+    position: fixed;
+  font-size: 35px;
+  font-weight: 900;
+  line-height: 1.1;
+  color: #fff;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  color:antiquewhite;
+}
+.glitchedAnim {
+  position: absolute;
+  top: 1.5rem;
+  opacity: 0.9;
+}
+.invisible-text {
+  visibility: hidden;
+}
+.glitchedAnim:nth-child(2) {
+  color: #f03e3e;
+  animation: skewAnim 3s infinite;
+}
+.glitchedAnim:nth-child(3) {
+  color: #3df0cf;
+  animation: glitchAnim2 3s infinite;
+}
+.glitchedAnim:nth-child(4) {
+  color: #f1f1f1;
+  animation: glitchAnim1 3s infinite;
+}
+.txt-info {
+  font-family: Open Sans, sans-serif;
+  color: #f1f1f1;
+  font-size: 20px;
+}
+@keyframes glitchAnim1 {
+  7% {
+    transform: none;
+  }
+  10% {
+    transform: translate(3px, -2px);
+  }
+  13% {
+    transform: none;
+  }
+  20% {
+    transform: none;
+  }
+  23% {
+    transform: translate(-6px, -7px);
+  }
+  26% {
+    transform: none;
+  }
+  40% {
+    transform: none;
+  }
+  43% {
+    transform: translate(5px, -9px);
+  }
+  46% {
+    transform: none;
+  }
+  65% {
+    transform: none;
+  }
+  68% {
+    transform: translate(7px, 5px);
+  }
+  71% {
+    transform: none;
+  }
+  100% {
+    transform: none;
+  }
+}
+@keyframes glitchAnim2 {
+  7% {
+    transform: none;
+  }
+  10% {
+    transform: translate(-6px, 2px);
+  }
+  13% {
+    transform: none;
+  }
+  20% {
+    transform: none;
+  }
+  23% {
+    transform: translate(6px, 7px);
+  }
+  26% {
+    transform: none;
+  }
+  40% {
+    transform: none;
+  }
+  43% {
+    transform: translate(-5px, 9px);
+  }
+  46% {
+    transform: none;
+  }
+  65% {
+    transform: none;
+  }
+  68% {
+    transform: translate(-7px, 5px);
+  }
+  71% {
+    transform: none;
+  }
+  100% {
+    transform: none;
+  }
+}
+@keyframes skewAnim {
+  20% {
+    transform: none;
+  }
+  23% {
+    transform: skew(5deg, -5deg) translate(10px, 5px);
+  }
+  26% {
+    transform: none;
+  }
+  40% {
+    transform: none;
+  }
+  43% {
+    transform: skew(5deg, -10deg) translate(-5px, 2px);
+  }
+  46% {
+    transform: none;
+  }
+  100% {
+    transform: none;
+  }
+}
