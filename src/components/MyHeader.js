@@ -17,11 +17,11 @@ function MyHeader() {
                 <h2 id="bAccueil">Accueil</h2>
             </div>
             <div className="button">
-                <a href="./sucree.html"><img src="/imgs/croissant.jpg" alt="bouton recette sucré"/></a>
+                <a href="./sucree"><img src="/imgs/croissant.jpg" alt="bouton recette sucré"/></a>
                 <h2 id="bSucree">Sucré</h2>
             </div>
             <div className="button">
-                <a href="../salee.html"><img src="/imgs/pasta.jpg" alt="bouton recette salée"/></a>
+                <a href="../salee"><img src="/imgs/pasta.jpg" alt="bouton recette salée"/></a>
                 <h2 id="bSalee">Salé</h2>
             </div>
             <div className="button">

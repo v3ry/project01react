@@ -7,6 +7,9 @@ import MyHeader from './components/MyHeader';
 import Footer from './components/Footer';
 import Accueil from './components/Accueil';
 import Contact from "./components/Contact";
+import Sucree from "./components/Sucree";
+import Salee from "./components/Salee";
+
 
 function App() {
   return (
@@ -14,6 +17,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="contact" element={<About />} />
+        <Route path="sucree" element={<GoSucree />} />
+        <Route path="salee" element={<GoSalee />} />
       </Routes>
     </div>
   );
@@ -32,6 +37,24 @@ function About() {
     <div className="App">
       <MyHeader/>
       <Contact/>
+      <Footer/>
+    </div>
+  );
+}
+function GoSucree() {
+  return (
+    <div className="App">
+      <MyHeader/>
+      <Sucree />
+      <Footer/>
+    </div>
+  );
+}
+function GoSalee() {
+  return (
+    <div className="App">
+      <MyHeader/>
+      <Salee/>
       <Footer/>
     </div>
   );
