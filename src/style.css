@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 body{
-    background-image:url(./imgs/pexels-dmitry-zvolskiy-2062426.jpg);
+    background-image:url(../public/imgs/pexels-dmitry-zvolskiy-2062426.jpg);
     background-attachment: fixed;
     background-position: center;
     width: 100%;
@@ -96,18 +96,18 @@ header{
 /*
 Zone Main
 */
-main{
+.Main{
     margin: 1rem 10%;
     background-color: rgba(250, 235, 215,0.8);
     border-radius: 11px;
     padding: 2rem;
 }
-main h1{
+.Main h1{
     margin: 0.5rem 1rem;
     margin-bottom: 2rem;
 }
 
-main h2{
+.Main h2{
     margin: 2rem 1rem 1rem 1rem;
 }
 /*
@@ -286,7 +286,7 @@ Zone Responsive
 }
 
 @media screen and (max-width: 600px) {
-    main{
+  .Main{
         margin: 0;
         padding: 1rem 0;
         width: 100%;

@@ -1,6 +1,6 @@
 import '../style.css';
 
-function Footer() {
+function Sucree() {
   return (
     <div className="MyFooter">
         <footer>
@@ -12,4 +12,4 @@ function Footer() {
   );
 }
 
-export default Footer;
+export default Sucree;

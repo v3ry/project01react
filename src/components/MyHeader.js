@@ -13,7 +13,7 @@ function MyHeader() {
           </div>
         <div className="buttonBlock">
             <div className="button">
-                <a href="./index.html"><img src="/imgs/baniere.jpg" alt="bouton accueil"/></a>
+                <a href="./"><img src="/imgs/baniere.jpg" alt="bouton accueil"/></a>
                 <h2 id="bAccueil">Accueil</h2>
             </div>
             <div className="button">
@@ -25,7 +25,7 @@ function MyHeader() {
                 <h2 id="bSalee">Salé</h2>
             </div>
             <div className="button">
-                <a href="../contact.html"><img src="/imgs/contact.jpg" alt="bouton contact"/></a>
+                <a href="./contact"><img src="/imgs/contact.jpg" alt="bouton contact"/></a>
                 <h2 id="bContact">Contact</h2>
             </div>
         </div>
