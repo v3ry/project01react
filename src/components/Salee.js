@@ -1,6 +1,20 @@
 import '../style.css';
 
 function Salee() {
+    const recSalee = [
+        {
+            img:"./imgs/pate-brisee.jpg",
+            txtPreview:["Préparation : 5 min",
+            "Total : 6 min",
+            "Difficulté : 1 portions",
+            "Cout total : 0,90€",
+            "Calorie par portion : 362 kcal"],
+            txtIngr:["300gr de farine","1 cc à café","125gr beurre","100gr d'eau"],
+            txtRec:["Mettre 300 grammes de farine",
+            "1 cuillère à café de sel", 
+            "125 grammes de beurre coupés en morceaux et 100 grammes d'eau tiède dans le robot. Pétrir 1 min/programme Pétrissage."]   
+        }
+    ]
   return (
     <div className="Main">
         <h1>Les salés</h1>
@@ -22,10 +36,10 @@ function Salee() {
             <div className="recetteFull">
                 <h3>Ingredients</h3>
                 <ul>
-                    <li>300gr de farine</li>
-                    <li>1 cc à café</li>
-                    <li>125gr beurre</li>
-                    <li>100gr d'eau</li>
+                    <li>"300gr de farine"</li>
+                    <li>"1 cc à café"</li>
+                    <li>"125gr beurre"</li>
+                    <li>"100gr d'eau"</li>
                 </ul>
                 <h3>Recette</h3>
                 <ol>
