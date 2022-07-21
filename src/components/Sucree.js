@@ -1,5 +1,6 @@
 import '../style.css';
-function launch(){
+function launch(e){
+    // e.preventDefault();
 const recettePreview = document.querySelectorAll(".recettePreview");
 let myId = 0; //défini une valeur id
 
@@ -9,6 +10,7 @@ recettePreview.forEach(rec=>{   //Boucle dans les previews
     window["bAppear"+myId] = false; //creation de boulean avec ID
     myId++;
     rec.addEventListener("click",function handleClick(event) {
+        event.preventDefault();
         console.log("click")
         let currentID = rec.getAttribute("ID");//récupere l'id de l'element
         if (window["bAppear"+currentID] === false){
