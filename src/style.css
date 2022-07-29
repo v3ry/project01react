@@ -141,7 +141,7 @@ footer img{
     object-fit:contain;
 }
 p{
-    font-size: 20px;
+    font-size: 14px;
 }
 h4{
     margin: 1rem;
@@ -150,8 +150,9 @@ h4{
 /*
 Page Sucré Salé
 */
-ul li{
+ul li,ol{
     white-space: pre-wrap;
+    text-align: left;
 }
 .zoneRecettes{
     display: grid;

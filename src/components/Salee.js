@@ -1,25 +1,46 @@
 import '../style.css';
+import React,{useState,useEffect} from 'react';
+import axios from 'axios';
+import RecipCard from './RecipCard';
 
 function Salee() {
-    const recSalee = [
-        {
-            img:"./imgs/pate-brisee.jpg",
-            txtPreview:["Préparation : 5 min",
-            "Total : 6 min",
-            "Difficulté : 1 portions",
-            "Cout total : 0,90€",
-            "Calorie par portion : 362 kcal"],
-            txtIngr:["300gr de farine","1 cc à café","125gr beurre","100gr d'eau"],
-            txtRec:["Mettre 300 grammes de farine",
-            "1 cuillère à café de sel", 
-            "125 grammes de beurre coupés en morceaux et 100 grammes d'eau tiède dans le robot. Pétrir 1 min/programme Pétrissage."]   
-        }
-    ]
+    // const recSalee = [
+    //     {
+    //         img:"./imgs/pate-brisee.jpg",
+    //         txtPreview:["Préparation : 5 min",
+    //         "Total : 6 min",
+    //         "Difficulté : 1 portions",
+    //         "Cout total : 0,90€",
+    //         "Calorie par portion : 362 kcal"],
+    //         txtIngr:["300gr de farine","1 cc à café","125gr beurre","100gr d'eau"],
+    //         txtRec:["Mettre 300 grammes de farine",
+    //         "1 cuillère à café de sel", 
+    //         "125 grammes de beurre coupés en morceaux et 100 grammes d'eau tiède dans le robot. Pétrir 1 min/programme Pétrissage."]   
+    //     }
+    // ]
+
+    const [apiRecipes, setApiRecipes] = useState([]);
+    
+
+    useEffect(() => {
+      axios
+        .get(`http://localhost:4002/api/items`)
+        .then((data) => setApiRecipes(data.data.response))
+        // gestion des erreurs
+        .catch((error) =>
+          console.warn(`Authorization failed : ${error.message}`)
+        );
+    }, []);
+
+    apiRecipes && console.log(apiRecipes);
   return (
     <div className="Main">
         <h1>Les salés</h1>
         <div className="zoneRecettes">
-        <div className="recettePreview">
+            {apiRecipes && apiRecipes.map(rec=>( 
+            <RecipCard key={rec.id} recipe={rec}/>
+        ))}
+        {/* <div className="recettePreview">
             <div className="preview">
             <img src="./imgs/pate-brisee.jpg" alt="Image recette pas brisé"/>
             <div className="zoneTextPreview">
@@ -128,7 +149,7 @@ function Salee() {
                     <li>Servir chaud.</li>
                 </ol>
             </div>
-        </div>
+        </div> */}
     </div>
     </div>
   );
