@@ -9,6 +9,7 @@ import Sucree from "./components/Sucree";
 import Salee from "./components/Salee";
 import ContactViewer from "./components/ContactViewer";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import RecipViewer from "./components/RecipViewer";
 
 
 function App() {
@@ -18,9 +19,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="contact" element={<Contact />} />
-        <Route path="contact" element={<Contact />} />
-        <Route path="contactv" element={<ContactViewer/>} />
+        <Route path="sucree" element={<Sucree />} />
         <Route path="salee" element={<Salee />} />
+        <Route path="contactv" element={<ContactViewer/>} />
+        <Route path="recipv" element={<RecipViewer/>} />
       </Routes>
       <Footer/>
     </div>

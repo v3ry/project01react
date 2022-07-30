@@ -3,23 +3,27 @@ import React,{useState,useEffect} from 'react';
 
 function RecipCard({recipe}) {
     const [open, setOpen] = useState(false);
-    const recettePreview = document.querySelectorAll(".recettePreview");
-    const opening = ()=>{
+    let num = 0
+    
+
+    const opening = (id)=>{
+        const recettePreview = document.querySelector(`#rec${recipe.id}`);
+        console.log(num);
         if (open === false){
             setOpen(true);
-            recettePreview[recipe.id-1].classList.add("displayRecette");
-            recettePreview[recipe.id-1].lastElementChild.classList.remove("recetteFull")
+            recettePreview.classList.add("displayRecette");
+            recettePreview.lastElementChild.classList.remove("recetteFull")
         }else{
             setOpen(false);
-            recettePreview[recipe.id-1].classList.remove("displayRecette")
-            recettePreview[recipe.id-1].lastElementChild.classList.add("recetteFull"); //recacher le texte
+            recettePreview.classList.remove("displayRecette")
+            recettePreview.lastElementChild.classList.add("recetteFull"); //recacher le texte
         }
     }
   return (
     <div className="ttete">
-        <div className="recettePreview">
+        <div className={`recettePreview`} id={`rec${recipe.id}`}>
             <div className="preview">
-            <img src={recipe.img} alt="Image recette pas brisé" onClick={opening}/>
+            <img src={recipe.img} alt="Image recette pas brisé" onClick={()=>opening(num)} className={"img-thumbnail btn-secondary"}/>
             <div className="zoneTextPreview">
             <h3 className="titlePreview">{recipe.title}</h3>
             <ul className="textPreview">
@@ -28,7 +32,7 @@ function RecipCard({recipe}) {
                 ))}
                 
                 {/* ))}  */}
-                {console.log(recipe.txtPreview)}
+                {/* {console.log(recipe.txtPreview)} */}
             </ul>
         </div>
         </div>

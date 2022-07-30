@@ -13,3 +13,16 @@ thead th:first-child {
     border-top-right-radius: 2rem;
     /* border-radius: 0 100px 100px 0; */
   }
+/* tr{
+    width:auto;
+} */
+/* .inputId{
+    width:2rem;
+}
+.input2{
+    width:7rem;
+} */
+td > input[type='text']
+{
+    width: 100%; /*this will set the width of the textbox equal to its container td*/
+}

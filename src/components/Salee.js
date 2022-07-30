@@ -21,7 +21,9 @@ function Salee() {
         <div className="Main">
             <h1>Les salés</h1>
             <div className="zoneRecettes">
-                {apiRecipes && apiRecipes.map(rec=>( 
+                {apiRecipes && apiRecipes
+                .filter(cat=> cat.cat === 1)
+                .map(rec=>( 
                 <RecipCard key={rec.id} recipe={rec}/>
             ))}
     </div>

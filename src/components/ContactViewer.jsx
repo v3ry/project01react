@@ -23,7 +23,7 @@ export default function ContactViewer() {
         .catch((error) =>
           console.warn(`Authorization failed : ${error.message}`)
         )
-        // .then(window.location.reload(false));
+        .then(window.location.reload(false));
 
         setRefresh(!refresh)
     }
@@ -43,7 +43,7 @@ export default function ContactViewer() {
                 </tr>
                 </thead>
                 <tbody>
-                {messages.map((msg,index)=>(
+                {messages && messages.map((msg,index)=>(
                     <tr key={msg.id}>
                         <td>{msg.id}</td>
                         <td>{msg.name}</td>
@@ -53,6 +53,7 @@ export default function ContactViewer() {
                         <td><button onClick={()=>deletClick(msg.id)}>Delete</button></td>
                     </tr>
                     ))}
+                {messages[0] === undefined ? <tr><td>No more message</td><td>X</td><td>X</td><td>X</td><td>X</td><td>X</td></tr>:""}
                 </tbody>
             </table>
         </div>

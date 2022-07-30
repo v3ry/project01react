@@ -101,6 +101,7 @@ Zone Main
     background-color: rgba(250, 235, 215,0.8);
     border-radius: 11px;
     padding: 2rem;
+    margin-top: 11rem;
 }
 .Main h1{
     margin: 0.5rem 1rem;
@@ -160,6 +161,7 @@ ul li,ol{
     gap: 30px;
     width: 100%;
     height: fit-content;
+    
 }
 
 .recettePreview{
