@@ -7,6 +7,8 @@ import Accueil from './components/Accueil';
 import Contact from "./components/Contact";
 import Sucree from "./components/Sucree";
 import Salee from "./components/Salee";
+import ContactViewer from "./components/ContactViewer";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
@@ -16,7 +18,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="contact" element={<Contact />} />
-        <Route path="sucree" element={<Sucree />} />
+        <Route path="contact" element={<Contact />} />
+        <Route path="contactv" element={<ContactViewer/>} />
         <Route path="salee" element={<Salee />} />
       </Routes>
       <Footer/>
