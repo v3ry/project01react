@@ -1,6 +1,7 @@
 import './ContactViewer.css';
 import React,{useState,useEffect} from 'react';
 import axios from "axios"
+import Button from 'react-bootstrap/Button';
 
 export default function RecipViewer() {
     const [recipes, setRecipes] = useState([]);
@@ -15,6 +16,7 @@ export default function RecipViewer() {
           console.warn(`Authorization failed : ${error.message}`)
         );
     }, [refresh]);
+
     const deletClick = (id)=>{
         // console.log(id);
         // axios
@@ -25,18 +27,9 @@ export default function RecipViewer() {
         //   console.warn(`Authorization failed : ${error.message}`)
         // )
         // .then(window.location.reload(false));
-        // setRefresh(!refresh)
-
-        console.log("desactivated for security");
+        setRefresh(!refresh)
+        console.warn("desactivated for security");
     }
-
-    // <td><input className='inputCat' type='text'></input></td>
-    // <td><input className='inputTitle' type='text'></input></td>
-    // <td><input className='inputImg' type='text'></input></td>
-    // <td><input className='inputPrev' type='text'></input></td>
-    // <td><input className='inputIng' type='text'></input></td>
-    // <td><input className='inputRec' type='text'></input></td> 
-    // <td><input className='inputDate' type='text'></input></td> 
 
     const addClick = ()=>{
 
@@ -82,12 +75,12 @@ export default function RecipViewer() {
                         <td>{rec.id}</td>
                         <td>{rec.cat}</td>
                         <td >{rec.title}</td>
-                        <td ><img src={rec.img}></img> </td>
+                        <td ><img src={rec.img} alt="recette"></img> </td>
                         <td>{rec.txtPreview}</td>
                         <td>{rec.txtIngr}</td>
                         <td>{rec.txtRec}</td>
                         <td>{rec.publication_date}</td>
-                        <td><button onClick={()=>deletClick(rec.id)}>Delete</button></td>
+                        <td><Button variant="outline-primary" onClick={()=>deletClick(rec.id)}>Delete</Button></td>
                     </tr>
                     ))}
                 {recipes[0] === undefined ? <tr><td>No more recipe</td><td>X</td><td>X</td><td>X</td><td>X</td><td>X</td></tr>:""}

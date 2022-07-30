@@ -1,5 +1,5 @@
 import '../style.css';
-import React,{useState,useEffect} from 'react';
+// import React,{useState,useEffect} from 'react';
 import axios from "axios"
 
 function Contact() {
@@ -9,10 +9,11 @@ function Contact() {
   }
   const myAlert = document.createElement("div");
   const message = document.createElement("p")
-  const currentDiv = document.querySelector(".Main");
+  
+
   async function sendNotif(myColor, text){
 
-    
+    const currentDiv = document.querySelector(".Main");
     //myAlert style
     myAlert.style.width = "300px";
     myAlert.style.height = "80px";
@@ -59,7 +60,7 @@ function Contact() {
   return (
     <div className="Main">
         <h1>Contact</h1>
-        <form id="contact-form" enctype="multipart/form-data">
+        <form id="contact-form" encType="multipart/form-data">
             <label id="fname">Nom/Pseudo:</label><br/>
             <input type="text" name="name" id="name" required/><br/>
             <label id="mail">Mail:</label><br/>

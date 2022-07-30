@@ -1,5 +1,5 @@
 import '../style.css';
-import React,{useState,useEffect} from 'react';
+import React,{useState} from 'react';
 
 function RecipCard({recipe}) {
     const [open, setOpen] = useState(false);
@@ -23,7 +23,7 @@ function RecipCard({recipe}) {
     <div className="ttete">
         <div className={`recettePreview`} id={`rec${recipe.id}`}>
             <div className="preview">
-            <img src={recipe.img} alt="Image recette pas brisé" onClick={()=>opening(num)} className={"img-thumbnail btn-secondary"}/>
+            <img src={recipe.img} alt="recette pas brisé" onClick={()=>opening(num)} className={"img-thumbnail btn-secondary"}/>
             <div className="zoneTextPreview">
             <h3 className="titlePreview">{recipe.title}</h3>
             <ul className="textPreview">

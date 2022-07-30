@@ -17,7 +17,7 @@ function App() {
     <div className="App">
       <MyHeader/>
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Accueil />} />
         <Route path="contact" element={<Contact />} />
         <Route path="sucree" element={<Sucree />} />
         <Route path="salee" element={<Salee />} />
@@ -28,40 +28,4 @@ function App() {
     </div>
   );
 }
-function Home() {
-  return (
-    <div className="App">
-      
-      <Accueil/>
-      
-    </div>
-  );
-}
-function About() {
-  return (
-    <div className="App">
-      <MyHeader/>
-      <Contact/>
-      <Footer/>
-    </div>
-  );
-}
-// function GoSucree() {
-//   return (
-//     <div className="App">
-//       <MyHeader/>
-//       <Sucree />
-//       <Footer/>
-//     </div>
-//   );
-// }
-// function GoSalee() {
-//   return (
-//     <div className="App">
-//       <MyHeader/>
-//       <Salee/>
-//       <Footer/>
-//     </div>
-//   );
-// }
 export default App;
