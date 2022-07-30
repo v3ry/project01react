@@ -18,15 +18,16 @@ export default function RecipViewer() {
     const deletClick = (id)=>{
         // console.log(id);
         // axios
-        // .delete(`http://82.65.82.1:4002/api/contact/${id}`)
+        // .delete(`http://82.65.82.1:4002/api/items/${id}`)
         // .then((data) => console.log(data.data))
         // // gestion des erreurs
         // .catch((error) =>
         //   console.warn(`Authorization failed : ${error.message}`)
         // )
         // .then(window.location.reload(false));
-        console.log("desactivated for security");
         // setRefresh(!refresh)
+
+        console.log("desactivated for security");
     }
 
     // <td><input className='inputCat' type='text'></input></td>
@@ -113,10 +114,10 @@ export default function RecipViewer() {
                         <td><input className='inputCat' type='text'></input></td>
                         <td><input className='inputTitle' type='text'></input></td>
                         <td><input className='inputImg' type='text'></input></td>
-                        <td><input className='inputPrev' type='text'></input></td>
-                        <td><input className='inputIng' type='text'></input></td>
-                        <td><input className='inputRec' type='text'></input></td> 
-                        <td><input className='inputDate' type='text'></input></td> 
+                        <td><textarea className='inputPrev' type='text'></textarea></td>
+                        <td><textarea className='inputIng' type='text'></textarea></td>
+                        <td><textarea className='inputRec' type='text'></textarea></td> 
+                        <td><textarea className='inputDate' type='text'></textarea></td> 
                         {/* <td><input></input></td>
                         <td><input></input></td>
                         */}

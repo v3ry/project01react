@@ -26,3 +26,7 @@ td > input[type='text']
 {
     width: 100%; /*this will set the width of the textbox equal to its container td*/
 }
+textarea{
+    height: 10rem;
+    width: 9rem;
+}
