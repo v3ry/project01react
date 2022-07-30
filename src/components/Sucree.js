@@ -1,35 +1,32 @@
 import '../style.css';
-function launch(){
-const recettePreview = document.querySelectorAll(".recettePreview");
-let myId = 0; //défini une valeur id
-
-recettePreview.forEach(rec=>{   //Boucle dans les previews
-    console.log("loop")
-    rec.setAttribute("ID",myId ) //ajoute l'attribut ID a chaque élément
-    window["bAppear"+myId] = false; //creation de boulean avec ID
-    myId++;
-    rec.addEventListener("click",function handleClick(event) {
-        console.log("click")
-        let currentID = rec.getAttribute("ID");//récupere l'id de l'element
-        if (window["bAppear"+currentID] === false){
-            rec.classList.add("displayRecette");
-            let test = rec.lastElementChild; //recupère le dernier enfant de displayRecette
-            rec.lastElementChild.classList.remove("recetteFull"); //enlevement de la classe cachant le texte
-            window["bAppear"+currentID] = true; //défini la boulean spécifique sur true
-        }else{
-            rec.classList.remove("displayRecette"); //enlevement de l'affichage complet
-            rec.lastElementChild.classList.add("recetteFull"); //recacher le texte
-            window["bAppear"+currentID] = false;
-}})})
-console.log("test")
-}
+import React,{useState,useEffect} from 'react';
+import axios from 'axios';
+import RecipCard from './RecipCard';
 
 function Sucree() {
+    const [apiRecipes, setApiRecipes] = useState([]);
+    
+    useEffect(() => {
+      axios
+        .get(`http://82.65.82.1:4002/api/items`)
+        .then((data) => setApiRecipes(data.data))
+        // gestion des erreurs
+        .catch((error) =>
+          console.warn(`Authorization failed : ${error.message}`)
+        );
+    }, []);
+
   return (
     <div className="Main">
         <h1>Les sucrés</h1>
         <div className="zoneRecettes">
-        <div className="recettePreview">
+                {apiRecipes && apiRecipes
+                .filter(cat=> cat.cat === 0)
+                .map(rec=>( 
+                <RecipCard key={rec.id} recipe={rec}/>
+            ))}
+
+        {/* <div className="recettePreview">
             <div className="preview">
             <img src="./imgs/batonnets-au-noix.jpg" alt="Image recette cookies"/>
             <div className="zoneTextPreview">
@@ -184,13 +181,11 @@ function Sucree() {
                     <li>Enfournez environ 15 min dans le four préchauffé à 180 °C.</li>
                 </ol>
             </div>
-        </div>
+        </div> */}
     </div>
-    <script src="./script.js"></script>
-    {launch()}
     </div>
   );
 
 }
-launch()
+
 export default Sucree;
