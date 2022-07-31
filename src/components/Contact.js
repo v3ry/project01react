@@ -62,14 +62,14 @@ function Contact() {
         <h1>Contact</h1>
         <form id="contact-form" encType="multipart/form-data">
             <label id="fname">Nom/Pseudo:</label><br/>
-            <input type="text" name="name" id="name" required/><br/>
+            <input type="text" name="name" id="name" required maxLength="20"/><br/>
             <label id="mail">Mail:</label><br/>
-            <input type="email" name="mail" id="email" required/><br/>
+            <input type="email" name="mail" id="email" required maxLength="50"/><br/>
             <label id="fsujet">Sujet:</label><br/>
-            <input type="text" name="Subject" id="subject" required/><br/>
+            <input type="text" name="Subject" id="subject" required maxLength="20"/><br/>
             <label id="fmessage">Message:</label><br/>
-            <textarea name="Message" id="message" rows="3" required></textarea><br/>
-            <input type="submit" value="Envoyer" id="bSend" onClick={launchMsg}/>
+            <textarea name="Message" id="message" rows="3" required maxLength="1000"></textarea><br/>
+            <input type="submit" value="Envoyer" id="bSend" onClick={launchMsg} />
         </form>
     </div>
   );

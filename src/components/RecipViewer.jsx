@@ -2,11 +2,12 @@ import './ContactViewer.css';
 import React,{useState,useEffect} from 'react';
 import axios from "axios"
 import Button from 'react-bootstrap/Button';
+import Notif from './Notif';
 
 export default function RecipViewer() {
     const [recipes, setRecipes] = useState([]);
     const [refresh, setRefresh] = useState([]);
-
+    const [bool,setBool]= useState(false);
     useEffect(() => {
       axios
         .get(`http://82.65.82.1:4002/api/items`)
@@ -27,7 +28,7 @@ export default function RecipViewer() {
         //   console.warn(`Authorization failed : ${error.message}`)
         // )
         // .then(window.location.reload(false));
-        setRefresh(!refresh)
+        // setRefresh(!refresh)
         console.warn("desactivated for security");
     }
 
@@ -80,7 +81,7 @@ export default function RecipViewer() {
                         <td>{rec.txtIngr}</td>
                         <td>{rec.txtRec}</td>
                         <td>{rec.publication_date}</td>
-                        <td><Button variant="outline-primary" onClick={()=>deletClick(rec.id)}>Delete</Button></td>
+                        <td><Button variant="outline-danger" onClick={()=>deletClick(rec.id)}>Delete</Button></td>
                     </tr>
                     ))}
                 {recipes[0] === undefined ? <tr><td>No more recipe</td><td>X</td><td>X</td><td>X</td><td>X</td><td>X</td></tr>:""}
@@ -102,19 +103,16 @@ export default function RecipViewer() {
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
+                <tr className="addrecipe">
                         <td>X</td>
                         <td><input className='inputCat' type='text'></input></td>
                         <td><input className='inputTitle' type='text'></input></td>
-                        <td><input className='inputImg' type='text'></input></td>
+                        <td><textarea className='inputImg' type='text'></textarea></td>
                         <td><textarea className='inputPrev' type='text'></textarea></td>
                         <td><textarea className='inputIng' type='text'></textarea></td>
                         <td><textarea className='inputRec' type='text'></textarea></td> 
                         <td><textarea className='inputDate' type='text'></textarea></td> 
-                        {/* <td><input></input></td>
-                        <td><input></input></td>
-                        */}
-                        <td><button onClick={()=>addClick()}>Add</button></td>
+                        <td><Button onClick={()=>addClick()} variant="outline-success">Add</Button></td>
                     </tr>
                 </tbody>
             </table>

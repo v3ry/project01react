@@ -1,4 +1,5 @@
 import '../style.css';
+import Button from 'react-bootstrap/Button';
 
 function MyHeader() {
   return (
@@ -11,6 +12,9 @@ function MyHeader() {
             <h1 className="glitchedAnim mainTitle">Le Gras C'est La Vie</h1>
             <h1 className="glitchedAnim mainTitle">Le Gras C'est La Vie</h1>
           </div>
+          <div className="Login">
+                <a href="./login"><Button id="bLogin" variant="success">Login</Button></a>
+            </div>
         <div className="buttonBlock">
             <div className="button">
                 <a href="./"><img src="/imgs/baniere.jpg" alt="bouton accueil"/></a>
@@ -29,7 +33,9 @@ function MyHeader() {
                 <h2 id="bContact">Contact</h2>
             </div>
         </div>
+
     </header>
+
     </div>
   );
 }
