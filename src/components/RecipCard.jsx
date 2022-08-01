@@ -1,7 +1,10 @@
 import '../style.css';
 import React,{useState} from 'react';
+import Button from 'react-bootstrap/Button';
+import { Link } from "react-router-dom";
+import axios from 'axios';
 
-function RecipCard({recipe}) {
+function RecipCard({recipe,pseudo,power,token}) {
     const [open, setOpen] = useState(false);
     let num = 0
     
@@ -18,6 +21,22 @@ function RecipCard({recipe}) {
             recettePreview.classList.remove("displayRecette")
             recettePreview.lastElementChild.classList.add("recetteFull"); //recacher le texte
         }
+    }
+
+    const deletClick = (id)=>{
+        const headers = {
+            headers: {Authorization: `Bearer ${token}`}
+        };
+        console.log(id);
+        axios
+        .delete(`http://82.65.82.1:4002/api/items/${id}`,headers)
+        .then((data) => console.log(data.data))
+        // gestion des erreurs
+        .catch((error) =>
+          console.warn(`Authorization failed : ${error.message}`)
+        )
+        .then(window.location.reload(false));
+        console.warn("desactivated for security");
     }
   return (
     <div className="ttete">
@@ -50,6 +69,11 @@ function RecipCard({recipe}) {
                 ))}
                 </ol>
                 <p>Updated on {recipe.publication_date}</p>
+                <p>Add by {recipe.createdBy}</p>
+                {(recipe.createdBy === pseudo || power === 1) && <div>
+                    <Link to={`/recipe/${recipe.id}`}><Button variant="success">Edit</Button></Link>
+                    {power === 1 && <Button variant="danger" onClick={()=>deletClick(recipe.id)}>Delete</Button>}
+                </div>}
             </div>
         </div>
     </div>

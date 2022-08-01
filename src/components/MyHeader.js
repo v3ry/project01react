@@ -1,7 +1,13 @@
 import '../style.css';
 import Button from 'react-bootstrap/Button';
+import UserContext from "../contexts/UserContext";
+import React, {useContext } from 'react'
+import { Link } from "react-router-dom";
 
 function MyHeader() {
+  const { pseudo, setPseudo } = useContext(UserContext);
+
+  
   return (
     <div className="MyHeader">
       <header>
@@ -13,23 +19,23 @@ function MyHeader() {
             <h1 className="glitchedAnim mainTitle">Le Gras C'est La Vie</h1>
           </div>
           <div className="Login">
-                <a href="./login"><Button id="bLogin" variant="success">Login</Button></a>
+          <Link to="/dashboard"><Button id="bLogin" variant="success">{pseudo === ""?"Login":pseudo}</Button></Link>
             </div>
         <div className="buttonBlock">
             <div className="button">
-                <a href="./"><img src="/imgs/baniere.jpg" alt="bouton accueil"/></a>
+                <Link to="/"><img src="/imgs/baniere.jpg" alt="bouton accueil"/></Link>
                 <h2 id="bAccueil">Accueil</h2>
             </div>
             <div className="button">
-                <a href="./sucree"><img src="/imgs/croissant.jpg" alt="bouton recette sucré"/></a>
+                <Link to="/sucree"><img src="/imgs/croissant.jpg" alt="bouton recette sucré"/></Link>
                 <h2 id="bSucree">Sucré</h2>
             </div>
             <div className="button">
-                <a href="../salee"><img src="/imgs/pasta.jpg" alt="bouton recette salée"/></a>
+                <Link to="/salee"><img src="/imgs/pasta.jpg" alt="bouton recette salée"/></Link>
                 <h2 id="bSalee">Salé</h2>
             </div>
             <div className="button">
-                <a href="./contact"><img src="/imgs/contact.jpg" alt="bouton contact"/></a>
+                <Link to="/contact"><img src="/imgs/contact.jpg" alt="bouton contact"/></Link>
                 <h2 id="bContact">Contact</h2>
             </div>
         </div>

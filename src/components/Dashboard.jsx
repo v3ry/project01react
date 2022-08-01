@@ -5,7 +5,7 @@ import jwt_decode from "jwt-decode";
 import { useNavigate } from 'react-router-dom';
 import UserContext from "../contexts/UserContext";
 import Button from 'react-bootstrap/Button';
-import ContactViewer from './ContactViewer';
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
     const [name, setName] = useState('');
@@ -14,8 +14,9 @@ const Dashboard = () => {
     const [users, setUsers] = useState([]);
     const [pwr,setPwr] = useState(0)
     const history = useNavigate();
-    const { isOnline, setIsOnline } = useContext(UserContext);
-
+    const { pseudo, setPseudo } = useContext(UserContext);
+    const { power, setPower } = useContext(UserContext);
+    const { myToken, setMyToken } = useContext(UserContext);
     useEffect(() => {
         refreshToken();
         getUsers();
@@ -25,16 +26,18 @@ const Dashboard = () => {
         try {
             const response = await axios.get('http://82.65.82.1:4002/token');
             setToken(response.data.accessToken);
-            setIsOnline(response.data.accessToken)
-            console.log(jwt_decode(response.data.accessToken))
+            setMyToken(response.data.accessToken);
+            
             const decoded = jwt_decode(response.data.accessToken);
             setName(decoded.name);
+            setPseudo(decoded.name);
             setExpire(decoded.exp);
             setPwr(decoded.power)
+            setPower(decoded.power)
             console.log(decoded.power)
         } catch (error) {
             if (error.response) {
-                history("/");
+                history("/login");
             }
         }
     }
@@ -49,6 +52,8 @@ const Dashboard = () => {
             setToken(response.data.accessToken);
             const decoded = jwt_decode(response.data.accessToken);
             setName(decoded.name);
+            setPseudo(decoded.name);
+            setPower(decoded.power)
             setExpire(decoded.exp);
         }
         return config;
@@ -68,17 +73,18 @@ const Dashboard = () => {
     const Logout = async () => {
         try {
             await axios.delete('http://82.65.82.1:4002/logout');
+            setPseudo("")
             history("/");
         } catch (error) {
             console.log(error);
         }
     }
-
+    console.log(name)
     return (
         <div className="Main">
             <h1>Welcome Back: {name}</h1>
-            <button onClick={getUsers} className="button is-info">Get Users</button>
-            <table className="table is-striped is-fullwidth">
+            {/* <button onClick={getUsers} className="button is-info">Get Users</button> */}
+            {pwr === 1 &&<table className="table is-striped is-fullwidth">
                 <thead>
                     <tr>
                         <th>No</th>
@@ -99,10 +105,15 @@ const Dashboard = () => {
                     ))}
 
                 </tbody>
-            </table>
-            <button onClick={Logout} className="button is-light">Logout</button>
-            <a href='/recipv'><Button className="button is-success is-fullwidth">Recipe Viewer</Button></a>
-            <a href='/contactv'><Button className="button is-success is-fullwidth">Contact Viewer</Button></a>
+            </table>}
+            <div className="buttonDashboard">
+                <Button onClick={Logout} variant="danger">Logout</Button>
+                <Link to="/recipe"><Button variant="success">Ajout Recette</Button></Link>
+                {power === 1 && <div>
+                <Link to="/recipv"><Button variant="success">Recipe Viewer</Button></Link>
+                <Link to="/contactv"><Button variant="success">Contact Viewer</Button></Link>
+                </div>}
+            </div>
         </div>
     )
 }

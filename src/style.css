@@ -236,7 +236,7 @@ form label{
 form input,textarea{
     padding: 4px;
     width: 80%;
-    height: 2rem;
+    /* height: 2rem; */
     margin: 1rem;
     border-radius: 11px;
 }
@@ -469,4 +469,9 @@ Anim Part
   100% {
     transform: none;
   }
+}
+
+
+.buttonDashboard{
+
 }

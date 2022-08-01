@@ -1,4 +1,6 @@
 import '../style.css';
+import React, {useContext } from 'react'
+// import UserContext from "../contexts/UserContext";
 
 function Accueil() {
   return (
@@ -18,9 +20,9 @@ function Accueil() {
         <div className="blocNews">
             <h4>17.05.2022</h4>
             <p>Ajout des recettes sucrées suivantes : <br/>
-                -Galette Bretonne<br/>
+                -Galette Bretonne</p><br/>
             <h4>13.05.2022</h4>
-            </p>
+            
             <p>Ajout des recettes sucrées suivantes : <br/>
                 -Gateaux aux noix<br/>
                 -Palets bretons au beurre salé<br/>
