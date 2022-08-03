@@ -35,7 +35,7 @@ const Login = () => {
                                 <a href='/register'><Button className="button is-success is-fullwidth">Register Here</Button></a>
                                 <a href='/dashboard'><Button className="button is-success is-fullwidth">DashBoard</Button></a>
                                 <div className="field mt-5">
-                                    <label className="label">Email or Username</label>
+                                    <label className="label">Email</label>
                                     <div className="controls">
                                         <input type="text" className="input" placeholder="Username" value={email} onChange={(e) => setEmail(e.target.value)} />
                                     </div>

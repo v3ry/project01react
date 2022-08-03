@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 
 function MyHeader() {
   const { pseudo, setPseudo } = useContext(UserContext);
-
   
   return (
     <div className="MyHeader">
@@ -19,7 +18,7 @@ function MyHeader() {
             <h1 className="glitchedAnim mainTitle">Le Gras C'est La Vie</h1>
           </div>
           <div className="Login">
-          <Link to="/dashboard"><Button id="bLogin" variant="success">{pseudo === ""?"Login":pseudo}</Button></Link>
+          <Link to="/dashboard"><Button id="bLogin" variant="success">{pseudo === ""||pseudo === null?"Login":pseudo}</Button></Link>
             </div>
         <div className="buttonBlock">
             <div className="button">

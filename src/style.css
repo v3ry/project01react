@@ -147,8 +147,9 @@ footer img{
     height: 50px;
     object-fit:contain;
 }
-p{
+p {
     font-size: 14px;
+    margin-bottom: 0px !important;
 }
 h4{
     margin: 1rem;
@@ -200,6 +201,7 @@ ul li,ol{
 }
 .zoneTextPreview{
     display: block;
+    width: min-content;
 }
 
 .recetteFull{
@@ -472,6 +474,7 @@ Anim Part
 }
 
 
-.buttonDashboard{
-
+.reviewZone > :first-child{
+  justify-content: center;
+  color:#c7a002
 }

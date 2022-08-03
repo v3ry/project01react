@@ -9,6 +9,8 @@ function Salee() {
     const { pseudo, setPseudo } = useContext(UserContext);
     const { power, setPower } = useContext(UserContext);
     const { myToken, setMyToken } = useContext(UserContext);
+    const { userId, setUserId } = useContext(UserContext);
+    const [apiReview, setApiReview] = useState([]);
     useEffect(() => {
       axios
         .get(`http://82.65.82.1:4002/api/items`)
@@ -18,8 +20,18 @@ function Salee() {
           console.warn(`Authorization failed : ${error.message}`)
         );
     }, []);
+    useEffect(() => {
+      axios
+        .get(`http://82.65.82.1:4002/api/review`)
+        .then((data) => setApiReview(data.data))
+        // gestion des erreurs
+        .catch((error) =>
+          console.warn(`Authorization failed : ${error.message}`)
+        );
+        
+    }, []);
 
-    apiRecipes && console.log(apiRecipes);
+    // apiRecipes && console.log(apiRecipes);
     return (
         <div className="Main">
             <h1>Les salés</h1>
@@ -27,7 +39,7 @@ function Salee() {
                 {apiRecipes && apiRecipes
                 .filter(cat=> cat.cat === 1)
                 .map(rec=>( 
-                <RecipCard key={rec.id} recipe={rec} pseudo={pseudo} power={power} token={myToken}/>
+                <RecipCard key={rec.id} recipe={rec} pseudo={pseudo} power={power} token={myToken} apiReview={apiReview} userId={userId} />
             ))}
     </div>
     </div>

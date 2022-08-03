@@ -17,10 +17,11 @@ const Dashboard = () => {
     const { pseudo, setPseudo } = useContext(UserContext);
     const { power, setPower } = useContext(UserContext);
     const { myToken, setMyToken } = useContext(UserContext);
+    const { userId, setUserId } = useContext(UserContext);
     useEffect(() => {
         refreshToken();
         getUsers();
-    }, []);
+    }, [token]);
 
     const refreshToken = async () => {
         try {
@@ -34,7 +35,12 @@ const Dashboard = () => {
             setExpire(decoded.exp);
             setPwr(decoded.power)
             setPower(decoded.power)
-            console.log(decoded.power)
+            setUserId(decoded.userId)
+            window.localStorage.setItem("token",response.data.accessToken);
+            window.localStorage.setItem("isLoggedIn",true);
+            window.localStorage.setItem("name",decoded.name);
+            window.localStorage.setItem("userId",decoded.userId);
+            console.log(decoded)
         } catch (error) {
             if (error.response) {
                 history("/login");
@@ -51,9 +57,15 @@ const Dashboard = () => {
             config.headers.Authorization = `Bearer ${response.data.accessToken}`;
             setToken(response.data.accessToken);
             const decoded = jwt_decode(response.data.accessToken);
+            window.localStorage.setItem("token",response.data.accessToken);
+            window.localStorage.setItem("isLoggedIn",true);
+            window.localStorage.setItem("name",decoded.name);
+            window.localStorage.setItem("userId",decoded.userId);
             setName(decoded.name);
             setPseudo(decoded.name);
             setPower(decoded.power)
+            setUserId(decoded.userId)
+            console.log(decoded)
             setExpire(decoded.exp);
         }
         return config;
@@ -62,24 +74,29 @@ const Dashboard = () => {
     });
 
     const getUsers = async () => {
-        const response = await axiosJWT.get('http://82.65.82.1:4002/users', {
+        if(token)
+        {const response = await axiosJWT.get('http://82.65.82.1:4002/users', {
             headers: {
                 Authorization: `Bearer ${token}`
             }
         });
-        setUsers(response.data);
+        setUsers(response.data);}
     }
 
     const Logout = async () => {
         try {
             await axios.delete('http://82.65.82.1:4002/logout');
             setPseudo("")
+            window.localStorage.setItem("isLoggedIn",false);
+            window.localStorage.removeItem("token");
+            window.localStorage.removeItem("name");
+            window.localStorage.removeItem("userId");
             history("/");
         } catch (error) {
             console.log(error);
         }
     }
-    console.log(name)
+    console.log("userId : " + userId)
     return (
         <div className="Main">
             <h1>Welcome Back: {name}</h1>

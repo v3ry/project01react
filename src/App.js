@@ -1,4 +1,4 @@
-import * as React from "react";
+import React,{useEffect} from "react";
 import { Routes, Route} from "react-router-dom";
 import './App.css';
 import MyHeader from './components/MyHeader';
@@ -22,25 +22,35 @@ function App() {
   const [pseudo, setPseudo] = React.useState("");
   const [power, setPower] = React.useState("");
   const [myToken, setMyToken] = React.useState("");
-  console.log("pseudo :   " + pseudo)
-  console.log("power :   " + power)
+  const [userId, setUserId] = React.useState(0);
+  const loggedIn = window.localStorage.getItem("loggedIn")
+  const userName = window.localStorage.getItem("name")
+  // setPseudo(window.localStorage.getItem("name"))
+  useEffect(() => {
+    setPseudo(window.localStorage.getItem("name"))
+    setMyToken(window.localStorage.getItem("token"))
+    setUserId(window.localStorage.getItem("userId"))
+  }, []);
+  // console.log("pseudo :   " + pseudo + " power :   " + power + "  userID :   " + userId)
   return (
     <div className="App">
-      <UserContext.Provider value={{ pseudo: pseudo, setPseudo: setPseudo }}><MyHeader/></UserContext.Provider>
+      <UserContext.Provider value={{ pseudo: pseudo, setPseudo: setPseudo ,power: power, setPower: setPower,myToken: myToken, setMyToken: setMyToken,userId:userId,setUserId:setUserId }}>
+        <MyHeader/>
       <Routes>
         <Route path="/" element={<Accueil />} />
         <Route path="contact" element={<Contact />} />
-        <Route path="sucree" element={<UserContext.Provider value={{ pseudo: pseudo, setPseudo: setPseudo ,power: power, setPower: setPower,myToken: myToken, setMyToken: setMyToken }}><Sucree /></UserContext.Provider>} />
-        <Route path="salee" element={<UserContext.Provider value={{ pseudo: pseudo, setPseudo: setPseudo ,power: power, setPower: setPower,myToken: myToken, setMyToken: setMyToken }}><Salee /></UserContext.Provider>} />
-        <Route path="contactv" element={<UserContext.Provider value={{ pseudo: pseudo, setPseudo: setPseudo }}><ContactViewer/></UserContext.Provider>} />
+        <Route path="sucree" element={<Sucree />} />
+        <Route path="salee" element={<Salee />} />
+        <Route path="contactv" element={<ContactViewer/>} />
         <Route path="recipv" element={<RecipViewer/>} />
         <Route path="login" element={<Login/>} />
         <Route path="register" element={<Register/>} />
         <Route path="recipe/:id" element={<AddEditReceipt edit={true}/>} />
         <Route path="recipe" element={<AddEditReceipt edit={false}/>} />
-        <Route path="dashboard" element={<UserContext.Provider value={{ pseudo: pseudo, setPseudo: setPseudo ,power: power, setPower: setPower,myToken: myToken, setMyToken: setMyToken }}><Dashboard/></UserContext.Provider>} />
+        <Route path="dashboard" element={<Dashboard/>} />
         
       </Routes>
+      </UserContext.Provider>
       <Footer/>
     </div>
   );
