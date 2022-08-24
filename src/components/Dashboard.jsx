@@ -40,6 +40,7 @@ const Dashboard = () => {
             window.localStorage.setItem("isLoggedIn",true);
             window.localStorage.setItem("name",decoded.name);
             window.localStorage.setItem("userId",decoded.userId);
+            window.localStorage.setItem("power",decoded.power);
             console.log(decoded)
         } catch (error) {
             if (error.response) {
@@ -91,6 +92,7 @@ const Dashboard = () => {
             window.localStorage.removeItem("token");
             window.localStorage.removeItem("name");
             window.localStorage.removeItem("userId");
+            window.localStorage.removeItem("power");
             history("/");
         } catch (error) {
             console.log(error);

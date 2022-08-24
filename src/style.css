@@ -239,7 +239,7 @@ form input,textarea{
     padding: 4px;
     width: 80%;
     /* height: 2rem; */
-    margin: 1rem;
+    /* margin: 1rem; */
     border-radius: 11px;
 }
 #message{
@@ -260,6 +260,7 @@ Burger Menu
 */
 .hamburger{
     display: none;
+    width: 4rem;
 }
 
 /*
@@ -285,14 +286,20 @@ Zone Responsive
         display: initial;
         position: fixed;
         top: 4rem;
-        right: 1rem;
+        right: 5rem;
+        width: 3rem;
         z-index: 3;
     }
     .hamburger img{
         margin-top: 2rem;
+        margin-left: 1rem;
         width: 50px;
         height: 50px;
     }  
+    #bLogin{
+      top: 4.4rem;
+      right: 0.5rem;
+    }
 
 }
 
@@ -301,6 +308,10 @@ Zone Responsive
         margin: 0;
         padding: 1rem 0;
         width: 100%;
+        margin-top: 11rem;
+    }
+    .mainImg{
+      height:120px;
     }
     .zoneRecettes{
         justify-content: space-around;
@@ -314,6 +325,10 @@ Zone Responsive
     .preview{
         display: flex;
         flex-direction: column;
+        text-align: center;
+    }
+    .zoneTextPreview{
+      width: auto;
     }
     .recettePreview{
         display: block;
@@ -477,4 +492,15 @@ Anim Part
 .reviewZone > :first-child{
   justify-content: center;
   color:#c7a002
+}
+
+.ff {
+  resize: none;
+}
+
+.commentZone{
+  margin: 0.5rem;
+  background-color: #c7a002;
+  border-radius: 11px;
+  border: 1px solid black;
 }

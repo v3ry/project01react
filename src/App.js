@@ -30,6 +30,7 @@ function App() {
     setPseudo(window.localStorage.getItem("name"))
     setMyToken(window.localStorage.getItem("token"))
     setUserId(window.localStorage.getItem("userId"))
+    setPower(window.localStorage.getItem("power"))
   }, []);
   // console.log("pseudo :   " + pseudo + " power :   " + power + "  userID :   " + userId)
   return (

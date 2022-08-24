@@ -1,26 +1,22 @@
 import '../style.css';
-import React,{useState,useEffect} from 'react';
+import React,{useState} from 'react';
 import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import Review from './Review';
+import Comment from './Comment';
 
 function RecipCard({recipe,pseudo,power,token,apiReview,userId}) {
     const [open, setOpen] = useState(false);
-    const [test, setTest] = useState(0);
     let haveVoted = false;
     let num = 0;
     let note = 0;
     let noteWeb = 0;
 
-    useEffect(() => {
-        // console.log("note : " + test + " recipeid : " + recipe.id);
-      }, [test]);
     
       const updateUsrReview = ()=>{
         let moy = 0;
         let count = 0;
-        let res = 0;
         apiReview && apiReview.forEach(review =>{
             if(recipe.id === review.recId && review.reviewType === 0) {
                 count++
@@ -31,7 +27,7 @@ function RecipCard({recipe,pseudo,power,token,apiReview,userId}) {
                 // save()
             }
         })
-        if(moy!=0){
+        if(moy!==0){
             note = moy / count
         }
     
@@ -39,8 +35,9 @@ function RecipCard({recipe,pseudo,power,token,apiReview,userId}) {
     const updateWebReview = ()=>{
         let moy = 0;
         let count = 0;
-        let res = 0;
+
         apiReview && apiReview.forEach(review =>{
+            // console.log("recipe id : " + recipe.id + " review recid: "+review.recId);
             if(recipe.id === review.recId && review.reviewType === 1) {
                 count++
                 // console.log(`note pour ${recipe.id} est de ${review.review}`)
@@ -57,7 +54,7 @@ function RecipCard({recipe,pseudo,power,token,apiReview,userId}) {
                 // console.log(`user ${userId} has already vote for ${review.recId}`);
             }
         })
-        if(moy!=0){
+        if(moy!==0){
             noteWeb = moy / count
         }
     
@@ -100,7 +97,7 @@ function RecipCard({recipe,pseudo,power,token,apiReview,userId}) {
             <div className="preview">
                 <div className="test3">
             <img src={recipe.img} alt="recette pas brisé" onClick={()=>opening(num)} className={"img-thumbnail btn-secondary"}/>
-            <Review recipId={recipe.id} note={note} noteWeb={noteWeb} apiReview={apiReview} token={token} test={test} haveVoted={haveVoted} userId={userId} />
+            <Review recipId={recipe.id} note={note} noteWeb={noteWeb} apiReview={apiReview} token={token} haveVoted={haveVoted} userId={userId} />
             </div>
             <div className="zoneTextPreview">
             <h3 className="titlePreview">{recipe.title}</h3>
@@ -131,6 +128,8 @@ function RecipCard({recipe,pseudo,power,token,apiReview,userId}) {
                 </ol>
                 <p>Updated on {recipe.publication_date}</p>
                 <p>Add by {recipe.createdBy}</p>
+                <Comment userId={userId} token={token} recipId={recipe.id}/>
+
                 {(recipe.createdBy === pseudo || power === 1) && <div>
                     <Link to={`/recipe/${recipe.id}`}><Button variant="success">Edit</Button></Link>
                     {power === 1 && <Button variant="danger" onClick={()=>deletClick(recipe.id)}>Delete</Button>}

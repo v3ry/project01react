@@ -6,7 +6,26 @@ import { Link } from "react-router-dom";
 
 function MyHeader() {
   const { pseudo, setPseudo } = useContext(UserContext);
-  
+  const btnBurger = document.querySelector(".hamburger");
+  const btnBlock = document.querySelector(".buttonBlock");
+  let burgerOpen = false;
+  let ifBurger = false;
+  // if (btnBlock) btnBlock.style.display = "none"
+  const onBurger = ()=>{
+    if (burgerOpen === false){
+        btnBlock.style.display = "flex";
+        burgerOpen = true;
+        ifBurger = true
+    }else{
+        btnBlock.style.display = "none";
+        burgerOpen = false;
+    }
+};
+const resetBurger = ()=>{
+if(ifBurger){  
+btnBlock.style.display = "none";
+burgerOpen = false;}
+}
   return (
     <div className="MyHeader">
       <header>
@@ -18,29 +37,29 @@ function MyHeader() {
             <h1 className="glitchedAnim mainTitle">Le Gras C'est La Vie</h1>
           </div>
           <div className="Login">
-          <Link to="/dashboard"><Button id="bLogin" variant="success">{pseudo === ""||pseudo === null?"Login":pseudo}</Button></Link>
+          <Link to="/dashboard"><Button id="bLogin" variant="success" onClick={resetBurger}>{pseudo === ""||pseudo === null?"Login":pseudo}</Button></Link>
             </div>
         <div className="buttonBlock">
             <div className="button">
-                <Link to="/"><img src="/imgs/baniere.jpg" alt="bouton accueil"/></Link>
+                <Link to="/" onClick={resetBurger}><img src="/imgs/baniere.jpg" alt="bouton accueil"/></Link>
                 <h2 id="bAccueil">Accueil</h2>
             </div>
             <div className="button">
-                <Link to="/sucree"><img src="/imgs/croissant.jpg" alt="bouton recette sucré"/></Link>
+                <Link to="/sucree" onClick={resetBurger}><img src="/imgs/croissant.jpg" alt="bouton recette sucré"/></Link>
                 <h2 id="bSucree">Sucré</h2>
             </div>
             <div className="button">
-                <Link to="/salee"><img src="/imgs/pasta.jpg" alt="bouton recette salée"/></Link>
+                <Link to="/salee" onClick={resetBurger}><img src="/imgs/pasta.jpg" alt="bouton recette salée"/></Link>
                 <h2 id="bSalee">Salé</h2>
             </div>
             <div className="button">
-                <Link to="/contact"><img src="/imgs/contact.jpg" alt="bouton contact"/></Link>
+                <Link to="/contact" onClick={resetBurger}><img src="/imgs/contact.jpg" alt="bouton contact"/></Link>
                 <h2 id="bContact">Contact</h2>
             </div>
         </div>
-
+        <img src="/imgs/hamburger.png" alt="" className="hamburger" width={"2rem"} onClick={onBurger}/>
     </header>
-
+    
     </div>
   );
 }

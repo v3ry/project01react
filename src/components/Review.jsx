@@ -9,20 +9,6 @@ export default function Review({recipId,note,noteWeb,apiReview,token,haveVoted,u
     const [webReview, setWebReview] = useState();
     const [usrReview, setUsrReview] = useState(1);
     const [boolLock, setBoolLock] = useState(true);
-    // let note =1;
-    // useEffect(() => {
-    //     function noteChange(note){
-    //         setUsrReview(note)
-    //     }
-    //     axios
-    //       .get(`http://82.65.82.1:4002/api/review`)
-    //       .then((data) => setApiReview(data.data))
-    //       // gestion des erreurs
-    //       .catch((error) =>
-    //         console.warn(`Authorization failed : ${error.message}`)
-    //       );
-          
-    //   }, []);
 
 
 
