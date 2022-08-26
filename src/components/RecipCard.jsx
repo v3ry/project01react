@@ -128,7 +128,7 @@ function RecipCard({recipe,pseudo,power,token,apiReview,userId}) {
                 </ol>
                 <p>Updated on {recipe.publication_date}</p>
                 <p>Add by {recipe.createdBy}</p>
-                <Comment userId={userId} token={token} recipId={recipe.id}/>
+                <Comment userId={userId} token={token} recipId={recipe.id} pseudo={pseudo} power={power} />
 
                 {(recipe.createdBy === pseudo || power === 1) && <div>
                     <Link to={`/recipe/${recipe.id}`}><Button variant="success">Edit</Button></Link>
