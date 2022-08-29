@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import axios from 'axios';
 import Review from './Review';
 import Comment from './Comment';
+import Favorites from './Favorites';
 
 function RecipCard({recipe,pseudo,power,token,apiReview,userId}) {
     const [open, setOpen] = useState(false);
@@ -98,8 +99,10 @@ function RecipCard({recipe,pseudo,power,token,apiReview,userId}) {
                 <div className="test3">
             <img src={recipe.img} alt="recette pas brisé" onClick={()=>opening(num)} className={"img-thumbnail btn-secondary"}/>
             <Review recipId={recipe.id} note={note} noteWeb={noteWeb} apiReview={apiReview} token={token} haveVoted={haveVoted} userId={userId} />
+            <Favorites/>
             </div>
             <div className="zoneTextPreview">
+                
             <h3 className="titlePreview">{recipe.title}</h3>
             
             <ul className="textPreview">

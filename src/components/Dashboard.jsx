@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import UserContext from "../contexts/UserContext";
 import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
+import FavoritesViewer from './FavoritesViewer';
 
 const Dashboard = () => {
     const [name, setName] = useState('');
@@ -103,6 +104,9 @@ const Dashboard = () => {
         <div className="Main">
             <h1>Welcome Back: {name}</h1>
             {/* <button onClick={getUsers} className="button is-info">Get Users</button> */}
+            <div className="favoritesViewer">
+                <FavoritesViewer token={token} pseudo={pseudo}/>
+            </div>
             {pwr === 1 &&<table className="table is-striped is-fullwidth">
                 <thead>
                     <tr>

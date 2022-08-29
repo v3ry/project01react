@@ -504,3 +504,8 @@ Anim Part
   border-radius: 11px;
   border: 1px solid black;
 }
+
+img.emptyFav{
+  width: 70px;
+  height: auto;
+}

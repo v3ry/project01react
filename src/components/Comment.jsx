@@ -8,8 +8,8 @@ function Comment({token,userId,recipId,pseudo,power}) {
     const [comment,setComment]=useState([])
     const [refresh, setRefresh] = useState(false);
 
-    const comm = document.querySelector(".comm")
-    const commentZone = document.querySelector(".comm")
+    
+    // const commentZone = document.querySelector(".comm")
     
     useEffect(() => {
         axios
@@ -27,13 +27,16 @@ function Comment({token,userId,recipId,pseudo,power}) {
                 headers: {Authorization: `Bearer ${token}`}
             };
             console.log(userId)
+            const comm = document.querySelector(`.comm${recipId}`)
+            console.log("comm value : " + comm.value)
             if(comm.value){
             const msg = {usr_id:userId,rec_id:recipId,comment: comm.value};
             const addValue = [...comment,{usr_id:userId,rec_id:recipId,comment: comm.value}]
+            console.dir("adding : " + addValue);
             comm &&axios
             .post(`http://82.65.82.1:4002/api/comment`, msg,headers)
             .then(response => console.log(response))
-            .then(commentZone.value="")
+            .then(comm.value="")
             .then(setComment(addValue))
             .catch((error) =>
               console.warn("erreur : " + error)
@@ -62,11 +65,6 @@ function Comment({token,userId,recipId,pseudo,power}) {
             .catch((error) =>
               console.warn("erreur : " + error)
             );
-            
-            // .catch(setNum(2))
-            
-    
-            // setRefresh(!refresh)
         }
         // let canDelete = power === 1 || pseudo === comm.name
   return (
@@ -74,7 +72,7 @@ function Comment({token,userId,recipId,pseudo,power}) {
         <p>Comment:</p>
         {val === 0 ? <p>Pas encore de commentaire, postez le votre.</p>:""}
         {comment && comment.map((comm,index)=>(
-            <>{recipId === comm.rec_id &&
+            <div className={comm.id}>{recipId === comm.rec_id &&
             <div className='commentZone'>
                 {console.log("power : " + power + "  pseudo : " + pseudo)}
                 {/* <p>{comm}</p> */}
@@ -82,12 +80,12 @@ function Comment({token,userId,recipId,pseudo,power}) {
                 <p>{comm.comment}</p>
                 { (power === 1 || pseudo === comm.name) &&<Button variant="outline-danger" onClick={()=>deletClick(comm.id,comm.name)}>Delete</Button>}
             </div>}
-            </>
+            </div>
         ))}
         <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
                 <Form.Label>{`Votre commentaire`}</Form.Label>
-                <Form.Control as="textarea" rows={3} className="comm" maxLength="150"/>
+                <Form.Control as="textarea" rows={3} className={`comm${recipId}`} maxLength="150"/>
             </Form.Group>
         </Form>
         <Button type="button" className="btn btn-secondary" onClick={add}>Envoyer</Button>
