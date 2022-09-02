@@ -28,7 +28,7 @@ function AddEditReceipt(props) {
       .catch((error) =>
         console.warn(`Authorization failed : ${error.message}`)
       );
-  }, []);
+  }, [id]);
   const cat = document.querySelector(".aa")
   const tit = document.querySelector(".bb")
   const img = document.querySelector(".cc")

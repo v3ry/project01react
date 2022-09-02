@@ -9,6 +9,7 @@ import Favorites from './Favorites';
 
 function RecipCard({recipe,pseudo,power,token,apiReview,userId}) {
     const [open, setOpen] = useState(false);
+    const [isFavorite, setIsFavorite] = useState(false);
     let haveVoted = false;
     let num = 0;
     let note = 0;
@@ -99,7 +100,7 @@ function RecipCard({recipe,pseudo,power,token,apiReview,userId}) {
                 <div className="test3">
             <img src={recipe.img} alt="recette pas brisé" onClick={()=>opening(num)} className={"img-thumbnail btn-secondary"}/>
             <Review recipId={recipe.id} note={note} noteWeb={noteWeb} apiReview={apiReview} token={token} haveVoted={haveVoted} userId={userId} />
-            <Favorites/>
+            <Favorites pseudo={pseudo} isFavorite={isFavorite} recipId={recipe.id} token={token} userId={userId} />
             </div>
             <div className="zoneTextPreview">
                 

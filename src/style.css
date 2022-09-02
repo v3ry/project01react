@@ -505,7 +505,7 @@ Anim Part
   border: 1px solid black;
 }
 
-img.emptyFav{
+img.emptyFav,img.fav{
   width: 70px;
   height: auto;
 }

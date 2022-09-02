@@ -7,7 +7,7 @@ import Notif from './Notif';
 export default function RecipViewer() {
     const [recipes, setRecipes] = useState([]);
     const [refresh, setRefresh] = useState([]);
-    const [bool,setBool]= useState(false);
+    // const [bool,setBool]= useState(false);
     useEffect(() => {
       axios
         .get(`http://82.65.82.1:4002/api/items`)

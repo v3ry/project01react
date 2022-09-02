@@ -26,13 +26,13 @@ function Comment({token,userId,recipId,pseudo,power}) {
             const headers = {
                 headers: {Authorization: `Bearer ${token}`}
             };
-            console.log(userId)
+            // console.log(userId)
             const comm = document.querySelector(`.comm${recipId}`)
-            console.log("comm value : " + comm.value)
+            // console.log("comm value : " + comm.value)
             if(comm.value){
             const msg = {usr_id:userId,rec_id:recipId,comment: comm.value};
             const addValue = [...comment,{usr_id:userId,rec_id:recipId,comment: comm.value}]
-            console.dir("adding : " + addValue);
+            // console.dir("adding : " + addValue);
             comm &&axios
             .post(`http://82.65.82.1:4002/api/comment`, msg,headers)
             .then(response => console.log(response))
@@ -74,7 +74,7 @@ function Comment({token,userId,recipId,pseudo,power}) {
         {comment && comment.map((comm,index)=>(
             <div className={comm.id}>{recipId === comm.rec_id &&
             <div className='commentZone'>
-                {console.log("power : " + power + "  pseudo : " + pseudo)}
+                {/* {console.log("power : " + power + "  pseudo : " + pseudo)} */}
                 {/* <p>{comm}</p> */}
                 <p>{comm.name}</p>
                 <p>{comm.comment}</p>
